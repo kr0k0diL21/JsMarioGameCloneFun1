@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #5c94fc, #87ceeb);
+  font-family:
+    Courier New,
+    monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.game-container {
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px #000;
+}
+
+.ui {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 800px;
+}
+#game-area {
+  width: 800px;
+  height: 400px;
+  background: linear-gradient(
+    to bottom,
+    #5c94fc 80%,
+    #228b22 80%,
+    #228b22 100%
+  );
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+#mario {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('./mario.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 100;
+}
+#mario.big {
+  width: 40px;
+  height: 40px;
+  background-image: url('./mario.png');
+}
+.platform {
+  width: 20px;
+  height: 20px;
+  background-image: url('./platform.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.platform.ground {
+  width: 20px;
+  height: 20px;
+  background-image: url('./platformground.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.platform.blue {
+  width: 20px;
+  height: 20px;
+  background-image: url('./platformblue.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.enemy {
+  width: 20px;
+  height: 20px;
+  background-image: url('./gumba.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.enemy.turtle {
+  width: 20px;
+  height: 20px;
+  background-image: url('./turtle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.coin {
+  width: 20px;
+  height: 20px;
+  background-image: url('./coin.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: coinSpin 1s linear infinite;
+}
+
+@keyframes coinSpin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+.surprise-block {
+  width: 20px;
+  height: 20px;
+  background-image: url('./itembox.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.surprise-block.hit {
+  width: 20px;
+  height: 20px;
+  background-image: url('./itemboxempty.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pipe {
+  width: 40px;
+  height: 40px;
+  background-image: url('./pipe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pipe-top {
+  width: 20px;
+  height: 20px;
+  background-image: url('./pipe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pipe-top-right {
+  width: 20px;
+  height: 20px;
+  background-image: url('./pipe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pipe-bottom {
+  width: 20px;
+  height: 20px;
+  background-image: url('./pipe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pipe-bottom-right {
+  width: 20px;
+  height: 20px;
+  background-image: url('./pipe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.controls {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+#game-over {
+  position: absolute;
+  top: 50%;
+  border: 3px solid #fff;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 8px 12px #000;
+}
+
+#restart-button {
+  background-color: #ff6b6b;
+  color: #fff;
+
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px 10px;
+}
+#restart-button:hover {
+  background-color: #ff4c4c;
+}
