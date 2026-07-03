@@ -28,6 +28,7 @@ body {
   min-width: 800px;
 }
 #game-area {
+  position: relative;
   width: 800px;
   height: 400px;
   background: linear-gradient(
@@ -55,27 +56,24 @@ body {
   background-image: url('./mario.png');
 }
 .platform {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./platform.png');
-  background-size: contain;
-  background-repeat: no-repeat;
 }
-.platform.ground {
+.platform.floating {
+  position: absolute;
   width: 20px;
   height: 20px;
-  background-image: url('./platformground.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('./platformfloating.png');
 }
 .platform.blue {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./platformblue.png');
-  background-size: contain;
-  background-repeat: no-repeat;
 }
-.enemy {
+.enemy.gumba {
   width: 20px;
   height: 20px;
   background-image: url('./gumba.png');
@@ -162,7 +160,7 @@ body {
 }
 #game-over {
   position: absolute;
-  top: 50%;
+  top: 30%;
   border: 3px solid #fff;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -186,4 +184,11 @@ body {
 }
 #restart-button:hover {
   background-color: #ff4c4c;
+}
+.mushroom {
+  width: 20px;
+  height: 20px;
+  background-image: url('./mushroom.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
