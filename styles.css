@@ -74,6 +74,7 @@ body {
   background-image: url('./platformblue.png');
 }
 .enemy.gumba {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./gumba.png');
@@ -81,6 +82,7 @@ body {
   background-repeat: no-repeat;
 }
 .enemy.turtle {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./turtle.png');
@@ -88,6 +90,7 @@ body {
   background-repeat: no-repeat;
 }
 .coin {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./coin.png');
@@ -105,6 +108,7 @@ body {
   }
 }
 .surprise-block {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./itembox.png');
@@ -112,6 +116,7 @@ body {
   background-repeat: no-repeat;
 }
 .surprise-block.hit {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./itemboxempty.png');
@@ -119,6 +124,7 @@ body {
   background-repeat: no-repeat;
 }
 .pipe {
+  position: absolute;
   width: 40px;
   height: 40px;
   background-image: url('./pipe.png');
@@ -126,6 +132,7 @@ body {
   background-repeat: no-repeat;
 }
 .pipe-top {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./pipe.png');
@@ -133,6 +140,7 @@ body {
   background-repeat: no-repeat;
 }
 .pipe-top-right {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./pipe.png');
@@ -140,6 +148,7 @@ body {
   background-repeat: no-repeat;
 }
 .pipe-bottom {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./pipe.png');
@@ -147,6 +156,7 @@ body {
   background-repeat: no-repeat;
 }
 .pipe-bottom-right {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-image: url('./pipe.png');
@@ -169,6 +179,7 @@ body {
   text-align: center;
   z-index: 1000;
   box-shadow: 0 8px 12px #000;
+  display: none;
 }
 
 #restart-button {

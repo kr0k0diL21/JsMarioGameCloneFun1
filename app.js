@@ -48,8 +48,8 @@ const levels = [
       { x: 600, y: 280, width: 80, height: 20, type: 'floating' },
     ],
     enemies: [
-      { x: 250, y: 344, type: 'gumba' },
-      { x: 550, y: 344, type: 'gumba' },
+      { x: 250, y: 340, type: 'gumba' },
+      { x: 550, y: 340, type: 'gumba' },
     ],
     coins: [
       { x: 220, y: 260 },
@@ -72,8 +72,8 @@ const levels = [
       { x: 550, y: 280, width: 60, height: 20, type: 'blue' },
     ],
     enemies: [
-      { x: 350, y: 344, type: 'gumba' },
-      { x: 650, y: 344, type: 'gumba' },
+      { x: 350, y: 340, type: 'gumba' },
+      { x: 650, y: 340, type: 'gumba' },
       { x: 570, y: 264, type: 'turtle' },
     ],
     coins: [
@@ -93,16 +93,16 @@ const levels = [
 
 function initGame() {
   loadLevel(gameState.level - 1);
-  /* gameLoop(); */
+  gameLoop();
 }
 
 function loadLevel(levelIndex) {
   if (levelIndex >= levels.length) {
-    //showGameOver(true);
+    showGameOver(true);
     return;
   }
   //clearing existing objects
-  //clearLevel();
+  clearLevel();
 
   const level = levels[levelIndex];
   const gameArea = document.getElementById('game-area');
@@ -132,6 +132,36 @@ function loadLevel(levelIndex) {
       id: 'platform-' + index,
     });
   });
+
+  //Create enemies
+  level.enemies.forEach((enemyData, index) => {
+    const enemy = createElement('div', `enemy ${enemyData.type}`, {
+      left: enemyData.x + 'px',
+      top: enemyData.y + 'px',
+    });
+    gameArea.appendChild(enemy);
+    gameObjects.enemies.push({
+      element: enemy,
+      ...enemyData,
+      id: 'enemy-' + index,
+      direction: -1,
+      speed: ENEMY_SPEED,
+      alaive: true,
+    });
+  });
+  //Create coins
+  level.coins.forEach((coinData, index) => {
+    const coins = createElement('div', 'coin', {
+      left: coinData.x + 'px',
+      top: coinData.y + 'px',
+    });
+    gameArea.appendChild(coins);
+    gameObjects.coins.push({
+      element: coins,
+      ...coinData,
+      id: 'coin-' + index,
+    });
+  });
 }
 
 function updateElementPosition(element, x, y) {
@@ -140,10 +170,56 @@ function updateElementPosition(element, x, y) {
 }
 
 function createElement(type, className, styles = {}) {
-  const element = document.createElement('div');
+  const element = document.createElement(type);
   element.className = className;
   Object.assign(element.style, styles);
   return element;
 }
+function showGameOver(won) {
+  gameState.gameRunning = false;
+  document.getElementById('game-over').textContent = won
+    ? 'Congratulations! You won!'
+    : 'Game over!';
+  document.getElementById('final-score').textContent = gameState.score;
+  document.getElementById('game').style.display = 'block';
+}
+
+function clearLevel() {
+  //const gameArea = document.getElementById('game-area')
+  Object.values(gameObjects)
+    .flat()
+    .forEach((obj) => {
+      if (obj.element && obj.element.parentNode) {
+        obj.element.remove();
+      }
+    });
+  gameObjects = {
+    platforms: [],
+    enemies: [],
+    coins: [],
+    surpriseBlocks: [],
+    pipes: [],
+  };
+}
+
+//Input handling
+document.addEventListener('keydown', (e) => {
+  gameState.keys[e.code] = true;
+  if (e.code === 'Space') {
+    e.preventDefault();
+  }
+});
+document.addEventListener('keyup', (e) => {
+  gameState.keys[e.code] = false;
+});
+
+function gameLoop() {
+  if (!gameState.gameRunning) return;
+  update();
+  requestAnimationFrame(gameLoop);
+}
+
+//Update game logic
+function update() {}
 //Start the game
 initGame();
